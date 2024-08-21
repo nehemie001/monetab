@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{home.css}" />
+<!--    <link rel="stylesheet" th:href="@{table.css}" />-->
+    <title>Document</title>
+</head>
+<body style="background-color: rgba(233, 238, 238, 0.459) !important">
+<div class="containers">
+    <!-- Slider -->
+    <section>
+        <div class="slider">
+            <div class="divLogo">
+                <img class="logoImg" th:src="@{ada.PNG}" alt="">
+                <h2 style="margin-left: 10px; color:rgb(31, 30, 30);">Mon Etab</h2>
+            </div>
+            <div class="slider-1">
+                <a id="dashboard" href="#">Tableau de bord</a>
+                <a id="tab-eleve" href="#">Elèves</a>
+                <a id="tab-prof" href="#">Professeurs</a>
+                <a id="tab-user" href="#">Utilisateurs</a>
+                <a id="tab-rapport" href="#">Rapport</a>
+            </div>
+            <div class="footer-button">
+                <button class="logout">deconnexion</button>
+            </div>
+        </div>
+    </section>
+    <!-- End Slider -->
+
+    <!--    Header-->
+        <section class="header">
+
+        </section>
+    <!--    End header-->
+
+    <!-- Content -->
+    <div id="content" class="s-table"></div>
+    <!-- End Content -->
+</div>
+</body>
+</html>
+<script th:src="@{app.js}"></script>

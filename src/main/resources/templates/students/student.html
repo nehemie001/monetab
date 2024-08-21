@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<!--    <link rel="stylesheet" th:href="@{table.css}">-->
+    <title>Students</title>
+</head>
+<!--for demo wrap-->
+<!--<section class="s-table">-->
+<div>
+    <div class="disp">
+        <h1 style="color: black !important">Elève</h1>
+        <button>Nouvel élève</button>
+    </div>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>prenom</th>
+                <th>Genre</th>
+                <th>Classe</th>
+                <th>Matricule</th>
+                <th>Age</th>
+                <th>Téléphone</th>
+                <th>Ville</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Kone</td>
+                <td>Aboubakar</td>
+                <td>M</td>
+                <td>Tle D</td>
+                <td>AJJKDI4889</td>
+                <td>17</td>
+                <td>0779951800</td>
+                <td>Bouaké</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--</section>-->
+</html>
+<style>
+    .s-table {
+         position:absolute;
+         color:green;
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         margin-top: 2rem;
+         margin-left: 15rem;
+         padding: 4rem;
+     }
+     table{
+       width:100%;
+       table-layout: fixed;
+       background-color: rgb(255 255 255);
+     }
+    .disp{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+     }
+    button {
+        height:40px;
+        background-color: #099ce3;
+        border-radius: 5px;
+        border-color: transparent;
+        margin-top: 25px;
+        color: white;
+        cursor: pointer;
+    }
+</style>
