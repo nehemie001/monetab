@@ -1,10 +1,7 @@
 package ci.digitalacademy.monetab.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.Instant;
 
@@ -14,11 +11,12 @@ import java.time.Instant;
 @AllArgsConstructor
 @Entity
 @Table(name = "user")
+@ToString
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "pseudo", unique = true, nullable = false)
     private String pseudo;
