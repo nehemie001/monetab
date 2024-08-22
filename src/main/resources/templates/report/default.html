@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/fragment::head"></head>
+
+<body style="background-color: rgba(233, 238, 238, 0.459) !important">
+
+<div class="containers" th:insert="fragments/fragment::sidebar"></div>
+
+<div class="flex">
+    <section class="" style="margin: 5rem">
+        <h2
+                style="
+            font-family: 'Courier New', Courier, monospace;
+            font-size: x-large;
+            display: flex;
+          "
+        >
+            Rapport
+        </h2>
+        <div class="container-r">
+            <form action="" class="">
+                <div
+                        class="flex-form-div2"
+                        style="margin-top: -1rem !important; padding: 1rem"
+                >
+                    <div class="flexCreate">
+                        <select
+                                class="inputPasswordCreate"
+                                style="margin-top: -2px !important"
+                                name=""
+                                id=""
+                        >
+                            <option value="">Sélectionner une option</option>
+                            <option value="">Liste des eleves</option>
+                            <option value="">Liste des professeurs</option>
+                            <option value="">Liste des utilisateurs</option>
+                        </select>
+                    </div>
+                    <div class="btnButton" style="margin-top: 1rem !important">
+                        <button class="btnCancel" type="button">
+                            Générer format PDF
+                        </button>
+                        <button class="btnSave" type="button">
+                            Générer format Excel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+<script th:src="@{app.js}"></script>

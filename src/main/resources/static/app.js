@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("tab-prof").addEventListener("click", function (event) {
   event.preventDefault();
 
-  fetch("/teacher")
+  fetch("/teachers")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("content").innerHTML = data;
@@ -50,7 +50,7 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault();
 
-    fetch("/student")
+    fetch("/students")
       .then((response) => response.text())
       .then((data) => {
         document.getElementById("content").innerHTML = data;
@@ -61,7 +61,7 @@ document
           .addEventListener("click", function (event) {
             event.preventDefault();
 
-            fetch("Eleves/create.html")
+            fetch("/students")
               .then((response) => response.text())
               .then((data) => {
                 document.getElementById("content").innerHTML = data;
@@ -90,7 +90,7 @@ document
 document.getElementById("tab-user").addEventListener("click", function (event) {
   event.preventDefault();
 
-  fetch("/user")
+  fetch("/users")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("content").innerHTML = data;

@@ -1,0 +1,43 @@
+
+<head th:fragment="head">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+
+<div class="containers" th:fragment ="sidebar">
+    <!-- Slider -->
+    <section>
+        <div class="slider">
+            <div class="divLogo">
+                <img class="logoImg" th:src="@{/ada.PNG}" alt="">
+                <h2 style="margin-left: 10px; color:rgb(31, 30, 30);">Mon Etab</h2>
+            </div>
+            <div class="slider-1">
+                <a th:href="@{/}">Tableau de bord</a>
+                <a th:href="@{/students}">Elèves</a>
+                <a th:href="@{/teachers}">Professeurs</a>
+                <a th:href="@{/users}">Utilisateurs</a>
+                <a th:href="@{/reports}">Rapport</a>
+            </div>
+            <div class="footer-button">
+                <a th:href="@{/login}" class="logout">déconnexion</a>
+            </div>
+        </div>
+    </section>
+    <!-- End Slider -->
+
+    <!--    Header-->
+<!--    <section class="header">-->
+<!--        xxx-->
+<!--    </section>-->
+    <!--    End header-->
+
+    <!-- Content -->
+<!--    <div id="content" class="s-table"></div>-->
+    <!-- End Content -->
+</div>
+
+<th:block th:fragments="script">
+    <script th:src="@{app.js}"></script>
+</th:block>

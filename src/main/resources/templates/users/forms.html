@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/fragment::head"></head>
+
+<body style="background-color: rgba(233, 238, 238, 0.459) !important">
+
+<div class="containers" th:insert="fragments/fragment::sidebar"></div>
+
+<!-- Student forms-->
+<div class="flex">
+    <section class="sectionCreate">
+        <div class="container-forms">
+            <h2 style="font-family: 'Courier New', Courier, monospace; font-size: x-large;">Ajouter un utilisateur</h2>
+            <form action="" class="flex-form">
+                <div class="flex-form-div">
+
+                    <div class="">
+
+                        <input
+                                type="password"
+                                name=""
+                                id=""
+                                class="inputPasswordCreate"
+                                placeholder="pseudo"
+                        />
+
+                        <input
+                                type="password"
+                                name=""
+                                id=""
+                                class="inputPasswordCreate"
+                                placeholder="mot de passe"
+                        />
+                        <input
+                                type="password"
+                                name=""
+                                id=""
+                                class="inputPasswordCreate"
+                                placeholder="confirmer mot de passe"
+                        />
+                        <div class="btnButton">
+                            <button class="btnCancel" type="button">Annuler</button>
+                            <button class="btnSave" type="button">Enregister</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+<!-- End Student forms-->
+</body>
+</html>
+<!--<script th:src="@{app.js}"></script>-->
+<style>
+
+
+</style>
+

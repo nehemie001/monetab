@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/fragment::head"></head>
+
+<body style="background-color: rgba(233, 238, 238, 0.459) !important">
+
+<div class="containers" th:insert="fragments/fragment::sidebar"></div>
+
+<!-- Student forms-->
+<div class="flex">
+    <section class="sectionCreate">
+        <div class="container-forms">
+            <h2 style="font-family: 'Courier New', Courier, monospace; font-size: x-large;">Ajouter un élève</h2>
+            <form action="" class="flex-form">
+                <div class="flex-form-div">
+                    <div class="flexCreate">
+                        <input
+                                type="text"
+                                class="inputIdentifiantCreate"
+                                placeholder="Nom"
+                        />
+                        <input
+                                type="password"
+                                name=""
+                                class="inputPasswordCreate"
+                                placeholder="Prenom"
+                        />
+                        <div class="radios">
+                            <input type="radio" name="" />
+                            <input type="radio" name="" />
+                        </div>
+                        <input
+                                type="password"
+                                name=""
+                                class="inputPasswordCreate"
+                                placeholder="Matricule"
+                        />
+                        <input class="inputPasswordCreate" type="date" name="" id="" />
+                    </div>
+                    <div class="flexCreate">
+                        <select class="inputPasswordCreate" style="margin-top: -2px !important;" name="">
+                            <option value="">Sélectionner une classe</option>
+                            <option value="">Tle</option>
+                            <option value="">1 ère</option>
+                            <option value="">2 nd</option>
+                            <option value="">3 ème</option>
+                            <option value="">4 ème</option>
+                            <option value="">5 ème</option>
+                            <option value="">6 ème</option>
+                        </select>
+                        <input
+                                type="password"
+                                name=""
+                                class="inputPasswordCreate"
+                                placeholder="Téléphone"
+                        />
+
+                        <input
+                                type="password"
+                                name=""
+                                class="inputPasswordCreate"
+                                placeholder="Ville"
+                        />
+                    </div>
+                    <div class="btnButton">
+                        <button class="btnCancel" type="button">Annuler</button>
+                        <button class="btnSave" type="button">Enregister</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+<!-- End Student forms-->
+</body>
+</html>
+<!--<script th:src="@{app.js}"></script>-->
+<style>
+
+
+</style>
+
