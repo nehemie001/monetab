@@ -1,0 +1,25 @@
+2024-08-22T12:52:51.505Z  INFO 10940 --- [monetab] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.11 with PID 10940 (C:\ATOS\monetab\target\classes started by HP in C:\ATOS\monetab)
+2024-08-22T12:52:51.527Z  INFO 10940 --- [monetab] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:52:51.687Z  INFO 10940 --- [monetab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:52:51.688Z  INFO 10940 --- [monetab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:52:54.021Z  INFO 10940 --- [monetab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:52:54.195Z  INFO 10940 --- [monetab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 155 ms. Found 1 JPA repository interface.
+2024-08-22T12:52:56.154Z  INFO 10940 --- [monetab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-22T12:52:56.184Z  INFO 10940 --- [monetab] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:52:56.185Z  INFO 10940 --- [monetab] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:52:56.325Z  INFO 10940 --- [monetab] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:52:56.327Z  INFO 10940 --- [monetab] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4632 ms
+2024-08-22T12:52:56.819Z  INFO 10940 --- [monetab] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:52:56.996Z  INFO 10940 --- [monetab] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:52:57.092Z  INFO 10940 --- [monetab] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:52:57.920Z  INFO 10940 --- [monetab] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:52:58.002Z  INFO 10940 --- [monetab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:52:58.352Z  INFO 10940 --- [monetab] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f9ecf3f
+2024-08-22T12:52:58.354Z  INFO 10940 --- [monetab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:52:58.488Z  WARN 10940 --- [monetab] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:53:00.173Z  INFO 10940 --- [monetab] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:53:00.605Z  INFO 10940 --- [monetab] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:53:01.346Z  WARN 10940 --- [monetab] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:53:02.495Z  INFO 10940 --- [monetab] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:53:02.590Z  INFO 10940 --- [monetab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2024-08-22T12:53:02.611Z  INFO 10940 --- [monetab] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 12.315 seconds (process running for 14.612)
