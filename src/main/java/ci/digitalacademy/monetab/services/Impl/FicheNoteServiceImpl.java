@@ -24,7 +24,7 @@ public class FicheNoteServiceImpl implements FicheNoteService {
      */
     @Override
     public FicheNote save(FicheNote ficheNote) {
-        return null;
+        return ficheNoteRepository.save(ficheNote);
     }
 
     /**

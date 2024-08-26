@@ -23,7 +23,7 @@ public class TeacherServiceImpl implements TeacherService {
      */
     @Override
     public Teacher save(Teacher teacher) {
-        return null;
+        return teacherRepository.save(teacher);
     }
 
     /**

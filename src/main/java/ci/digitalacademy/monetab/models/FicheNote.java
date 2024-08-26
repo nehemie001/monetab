@@ -1,10 +1,7 @@
 package ci.digitalacademy.monetab.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,6 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "ficheNote")
+@ToString
 public class FicheNote {
 
     @Id
@@ -19,8 +17,12 @@ public class FicheNote {
     private Long id;
 
     @Column(name = "note", nullable = false)
-    private Double note;
+    private String note;
 
     @Column(name = "years", nullable = false)
     private String years;
+
+//    @ManyToOne
+//    @JoinColumn(name = "teacher_id")
+//    private Teacher teacher;
 }

@@ -11,7 +11,6 @@ import java.time.Instant;
 @AllArgsConstructor
 @Entity
 @Table(name = "user")
-@ToString
 public class User {
 
     @Id
@@ -26,4 +25,19 @@ public class User {
 
     @Column(name = "date_creation", nullable = false)
     private Instant creationDate;
+
+    @OneToOne
+    @JoinColumn(name = "adresse_id")
+    private Adresse adresse;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", pseudo='" + pseudo + '\'' +
+                ", password='" + password + '\'' +
+                ", creationDate=" + creationDate +
+                ", adresse=" + adresse.getCity() +
+                '}';
+    }
 }
