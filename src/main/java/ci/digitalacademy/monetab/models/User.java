@@ -23,21 +23,17 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "date_creation", nullable = false)
-    private Instant creationDate;
+    @Column(name = "phone", nullable = false)
+    private String phone;
 
-    @OneToOne
-    @JoinColumn(name = "adresse_id")
-    private Adresse adresse;
+    @Column(name = "email", nullable = false)
+    private String email;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", pseudo='" + pseudo + '\'' +
-                ", password='" + password + '\'' +
-                ", creationDate=" + creationDate +
-                ", adresse=" + adresse.getCity() +
-                '}';
-    }
+//    @Column(name = "date_creation", nullable = false)
+//    private Instant creationDate;
+
+//    @OneToOne
+//    @JoinColumn(name = "adresse_id")
+//    private Adresse adresse;
+
 }

@@ -3,6 +3,7 @@ package ci.digitalacademy.monetab.services.Impl;
 import ci.digitalacademy.monetab.models.Person;
 import ci.digitalacademy.monetab.repositories.PersonRepository;
 import ci.digitalacademy.monetab.services.PersonService;
+import ci.digitalacademy.monetab.services.dto.PersonDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,20 +19,20 @@ public class PersonServiceImpl implements PersonService {
     private final PersonRepository personRepository;
 
     /**
-     * @param person
+     * @param personDTO
      * @return
      */
     @Override
-    public Person save(Person person) {
+    public PersonDTO save(PersonDTO personDTO) {
         return null;
     }
 
     /**
-     * @param person
+     * @param personDTO
      * @return
      */
     @Override
-    public Person update(Person person) {
+    public PersonDTO update(PersonDTO personDTO) {
         return null;
     }
 
@@ -40,7 +41,7 @@ public class PersonServiceImpl implements PersonService {
      * @return
      */
     @Override
-    public Optional<Person> findOne(Long id) {
+    public Optional<PersonDTO> findOne(Long id) {
         return Optional.empty();
     }
 
@@ -48,7 +49,7 @@ public class PersonServiceImpl implements PersonService {
      * @return
      */
     @Override
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         return List.of();
     }
 

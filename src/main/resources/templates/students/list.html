@@ -1,118 +1,167 @@
+<!-- component -->
 <!DOCTYPE html>
-<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
 <head th:insert="fragments/fragment::head"></head>
 
-<body style="background-color: rgba(233, 238, 238, 0.459) !important">
+<body>
+<div class="flex flex-col h-screen bg-gray-100">
 
-<div class="containers" th:insert="fragments/fragment::sidebar"></div>
+    <div class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
+        <div class="flex items-center">
+            <div class="flex items-center">
+                <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2">
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="menuBtn">
+                    <i class="fas fa-bars text-gray-500 text-lg"></i>
+                </button>
+            </div>
+        </div>
 
-<!-- Student forms-->
-<div class="flex">
-    <div class="container-table">
-        <div style="display:flex !important; justify-content:space-between !important; width:100% !important">
-            <a style="display:flex; justify-content:end; color:red !important"></a>
-            <a th:href="@{/teachers/add}" style="display:flex; justify-content:end; background-color:green; height:20px; color: white; border-radius: 5px; font-size: small">Nouvel élève</a>
+        <!-- Ícono de Notificación y Perfil -->
+        <div class="space-x-5">
+            <button>
+                <i class="fas fa-bell text-gray-500 text-lg"></i>
+            </button>
+            <!-- Botón de Perfil -->
+            <button>
+                <i class="fas fa-user text-gray-500 text-lg"></i>
+            </button>
         </div>
     </div>
-    <table id="customers">
-        <tr>
-            <th>#</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Classe</th>
-            <th>matricule</th>
-            <th>Age</th>
-            <th>Telephone</th>
-            <th>Ville</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Kone</td>
-            <td>Aboubakar</td>
-            <td>tle D</td>
-            <td>0193883889</td>
-            <td>25</td>
-            <td>077995109</td>
-            <td>Abidjan</td>
-            <td style="display: flex; width:11rem !important">
-                <a
-                        th:href="@{students/update}"
-                        style="
-                height: 10px;
-                justify-content: center;
-                align-items: center;
-                display: flex;
-              "
-                        class="btnModifier"
-                >
-                    Modifier
-                </a>
-                <button
-                        onclick="openModalDelete()"
-                        id="openModalDelete"
-                        style="
-                height: 30px;
-                justify-content: center;
-                align-items: center;
-                display: flex;
-              "
-                        class="btnSupprimer"
-                >
-                    Supprimer
-                </button>
-            </td>
-        </tr>
-    </table>
 
-    <!-- Modal -->
-    <div id="closeModal" class="modal">
-        <div class="imodal">a</div>
-        <div class="modal-1">
-            ATTENTION !!! <br />
-            <label class="text" for="">
-                Voulez-vous Supprimer cet professeur ?
-            </label>
-            <div class="btn">
-                <button onclick="btnClose()" id="btnclose" class="btnNo">
-                    Non
-                </button>
-                <button id="btnOpen" class="btnYes">Oui</button>
+    <!-- Contenido principal -->
+    <div class="flex-1 flex flex-wrap">
+
+        <!-- Sidebar -->
+        <div class="p-2 bg-white w-full md:w-60 flex flex-col md:flex hidden" th:insert="fragments/fragment::sidebar"></div>
+        <!--        End Sidebar -->
+
+        <!-- Table student -->
+        <div class="flex-1 p-4 w-full md:w-1/2 mt-8">
+            <div class="mt-8 bg-white p-4 shadow rounded-lg">
+                <div class="bg-white p-4 rounded-md mt-4">
+                    <div class="flex justify-between text-right mt-4">
+                        <h2 class="flex text-gray-500 text-lg font-semibold pb-4">Elèves(<span th:text="${students.size()}"></span>)</h2>
+                        <div class="text-right mt-4">
+                            <a th:href="@{/students/add}" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded">
+                                Nouvel élève
+                            </a>
+                        </div>
+                    </div>
+                    <div class="my-1"></div> <!-- Espacio de separación -->
+                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> <!-- Línea con gradiente -->
+                    <table class="w-full table-auto text-sm">
+                        <thead>
+                        <tr class="text-sm leading-normal">
+                            <th class="py-2  bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">#</th>
+                            <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Nom</th>
+                            <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">Prenom</th>
+                            <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">Matricule</th>
+                            <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="student:${students}" class="hover:bg-grey-lighter leading-normal">
+                            <th th:text="${student.getId()}" class="py-2 text-sm text-blue-500 border-b border-grey-light"></th>
+                            <th th:text="${student.getFirstName()}" class="py-2 bg-grey-lightest text-sm text-grey-light border-b border-grey-light"></th>
+                            <th th:text="${student.getLastName()}" class="py-2 bg-grey-lightest text-sm text-grey-light border-b border-grey-light text-right"></th>
+                            <th th:text="${student.getMatricule()}" class="py-2 bg-grey-lightest text-sm text-grey-light border-b border-grey-light text-right"></th>
+                            <th th:text="${student.getEmail()}" class="py-2 bg-grey-lightest text-sm text-grey-light border-b border-grey-light text-right"></th>
+                            <th class="py-2 bg-grey-lightest text-sm text-grey-light border-b border-grey-light text-right">
+                                <a th:href="@{/students/{id}(id=${student.id})}" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded">
+                                    Modifier
+                                </a>
+                                <button onclick="openModalDelete(this.dataset.id)" th:attr="data-id=${student.id}" class="bg-red-500 mx-2 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+                                    Supprimer
+                                </button>
+                            </th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!--                Modal delete-->
+                <div style="display: none !important" class="min-w-screen h-screen animated fadeIn faster fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover" id="modal_id">
+                    <div class="absolute bg-black opacity-20 inset-0 z-0"></div>
+                    <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
+                        <!--content-->
+                        <div class="">
+                            <!--body-->
+                            <div class="text-center p-5 flex-auto justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 -m-1 flex items-center text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 flex items-center text-red-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                </svg>
+                                <h2 class="text-xl font-bold py-4 ">Es-tu sure?</h2>
+                                <p class="text-sm text-gray-500 px-8">
+                                    Voulez-vous vraiment supprimer l'élève  ?
+                                    Ce processus ne peut pas être annulé
+                                </p>
+                            </div>
+                            <!--footer-->
+                            <div class="p-3  mt-2 text-center space-x-4 md:block">
+                                <button onclick="closeModal()" id="btnClose" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+                                    Non
+                                </button>
+                                <button onclick="deleteStudent()" class="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600">Oui</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                End Modal delete-->
+
             </div>
         </div>
     </div>
-    <!-- End Modal -->
-
 </div>
-<!-- End Student forms-->
 </body>
 </html>
-<script th:src="@{app.js}"></script>
 
-<style>
-    #customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+<script>
 
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+    var deleteId = null;
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+    function openModalDelete(id) {
+        console.log("ID reçu pour suppression:", id); // Affiche l'ID dans la console pour débogage
+        deleteId = id;
+        document.getElementById("modal_id").style.display = "flex";
+    }
 
-#customers tr:hover {background-color: #ddd;}
+    function closeModal() {
+        const closeModal = document.getElementById("modal_id");
+        closeModal.style.display = "none";
+    }
 
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
+    function deleteStudent() {
+        fetch(`/students/delete/${deleteId}`, {
+            method: 'GET',
+        }).then(response => {
+            if (response.ok) {
+                console.log('Student deleted successfully');
+                location.reload(); // Recharge la page après suppression
+            } else {
+                console.log('Error deleting student');
+            }
+        });
+    }
 
+
+    // Script for Modal
+    // function openModalDelete() {
+    //     var closeModal = document.getElementById("modal_id");
+    //     closeModal.style.display = "flex";
+    // }
+    //
+    // function closeModal() {
+    //     var closeModal = document.getElementById("modal_id");
+    //     closeModal.style.display = "none";
+    // }
+
+</script>

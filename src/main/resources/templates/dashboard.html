@@ -1,174 +1,97 @@
+<!-- component -->
 <!DOCTYPE html>
-<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:insert="fragments/fragment::head"></head>
 
-<body style="background-color: rgba(233, 238, 238, 0.459) !important">
+<body>
+<div class="flex flex-col h-screen bg-gray-100">
 
-<!--Sidebar-->
-<div class="containers" th:insert="fragments/fragment::sidebar"></div>
-
-<!--<section>-->
-    <div class="conDiv">
-<!--        <h1 style="font-size: xx-large !important;">-->
-<!--            Tableau de bord-->
-<!--        </h1>-->
-<!--        <div class="flex-2">-->
-<!--            <div class="col-1" style="margin-top: -30px !important; color: black; font-size: larger">-->
-<!--                <p style="margin-left: 5px; color: black; font-size: larger">Nombre d'élève</p>-->
-<!--                <div class="col-1-1" style="margin-left: -7rem !important">126 100</div>-->
-<!--            </div>-->
-<!--            <div class="col-2" style="margin-top: -25px !important; color: black; font-size: larger">-->
-<!--                <p style="margin-left: 5px; ">Nombre de Professeurs</p>-->
-<!--                <div class="col-1-1" style="margin-left: -7rem !important">-->
-<!--                    126 100-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-3" style="margin-top: 20px !important; color: black; font-size: larger">-->
-<!--                <p style="margin-left: 5px; color: black; font-size: larger">Nombre d'Utilisateurs</p>-->
-<!--                <div class="col-1-1" style="margin-left: -7rem !important">-->
-<!--                    126 100-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-4" style="margin-top: 20px !important; color: black; font-size: larger">-->
-<!--                <p style="margin-left: 5px; color: black; font-size: larger">Elève par genre</p>-->
-<!--                <div class="col-1-4"></div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-        <div class="flex-container">
-            <div class="flex-item flex-item-1">
-                <div class="" >
-                    <p style="margin-left: 5px; color: black; font-size: larger !important">Nombre d'élève</p>
-                    <div class="col-1-1" style="margin-left: 7rem !important; color: black;">126 100</div>
-                </div>
+    <div class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
+        <div class="flex items-center">
+            <div class="flex items-center">
+                <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2">
             </div>
-            <div class="flex-item flex-item-2">
-                <div class="" >
-                    <p style="margin-left: 5px; color: black; font-size: larger !important">Nombre de professeur</p>
-                    <div class="col-1-1" style="margin-left: 7rem !important; color: black;">126 100</div>
-                </div>
+            <div class="md:hidden flex items-center">
+                <button id="menuBtn">
+                    <i class="fas fa-bars text-gray-500 text-lg"></i>
+                </button>
             </div>
         </div>
 
-        <div class="flex-container">
-            <div class="flex-item flex-item-1">
-                <div class="" >
-                    <p style="margin-left: 5px; color: black; font-size: larger !important">Nombre d'élève</p>
-                    <div class="col-1-1" style="margin-left: 7rem !important; color: black;">126 100</div>
-                </div>
-            </div>
-            <div class="flex-item flex-item-2">
-                <div class="" >
-                    <p style="margin-left: 5px; color: black; font-size: larger !important">Elève par genre</p>
-                    <div class="col-1-1" style="margin-left: 7rem !important; color: black;">126 100</div>
-                </div>
-            </div>
+        <!-- Ícono de Notificación y Perfil -->
+        <div class="space-x-5">
+            <button>
+                <i class="fas fa-bell text-gray-500 text-lg"></i>
+            </button>
+            <!-- Botón de Perfil -->
+            <button>
+                <i class="fas fa-user text-gray-500 text-lg"></i>
+            </button>
         </div>
     </div>
 
+    <!-- Contenido principal -->
+    <div class="flex-1 flex flex-wrap">
 
-<!--</section>-->
-<!-- End Sidebar -->
+        <!-- Sidebar -->
+        <div class="p-2 bg-white w-full md:w-60 flex flex-col md:flex hidden" th:insert="fragments/fragment::sidebar"></div>
+        <!--  End Sidebar -->
+
+        <div class="flex-1 p-4 w-full md:w-1/2">
+
+            <div class="mt-7 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0">
+                <div class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
+                    <h2 class="text-gray-500 text-lg font-semibold pb-1">Nombre d'élève</h2>
+                    <div class="my-1"></div>
+                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+                    <div class="chart-container" style="position: relative; height:150px; width:100%">
+                        <canvas id="usersChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Segundo contenedor -->
+                <!-- Sección 2 - Gráfica de Comercios -->
+                <div class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
+                    <h2 class="text-gray-500 text-lg font-semibold pb-1">Nombre de professeur</h2>
+                    <div class="my-1"></div> <!-- Espacio de separación -->
+                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> <!-- Línea con gradiente -->
+                    <div class="chart-container" style="position: relative; height:150px; width:100%">
+                        <!-- El canvas para la gráfica -->
+                        <canvas></canvas>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0">
+                <!-- Primer contenedor -->
+                <!-- Sección 1 - Gráfica de Usuarios -->
+                <div class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
+                    <h2 class="text-gray-500 text-lg font-semibold pb-1">Nombre d'utilisateur</h2>
+                    <div class="my-1"></div> <!-- Espacio de separación -->
+                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6">
+
+                    </div> <!-- Línea con gradiente -->
+                    <div class="flex justify-center w-full">
+                        <div class="flex justify-center" th:text="${users.size()}"></div>
+                    </div>
+                </div>
+
+                <div class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
+                    <h2 class="text-gray-500 text-lg font-semibold pb-1">Genre</h2>
+                    <div class="my-1"></div>
+                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+                    <div class="chart-container" style="position: relative; height:150px; width:100%">
+                        <canvas></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
-<!--<script th:src="@{app.js}"></script>-->
-<style>
-    section{
-    position: fixed;
-    width: 50%;
-    }
-    .flex-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      text-align: center;
-      justify-content: center;
-      width: 70%;
-      height: 400px;
-      border-radius: 5px;
-      margin: 1.7rem;
-      padding: 2.5rem;
-      margin-left: 13.5rem;
-      margin-top: 6px;
-}
-    .conDiv {
-       padding: 2rem;
-       margin-left: 17rem;
-       margin-top: 2.5rem;
-    }
-
-    .col-1-4 {
-      background-color: rgb(255, 255, 255);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 170px;
-      height: 170px;
-      position: absolute;
-      top: 24rem;
-      /* left: 0; */
-      margin-right: 4.5%;
-      border-radius: 100%;
-      font-size: xx-large;
-}
-
-    @import "neat";
-@import "bourbon";
-
-* {
-  box-sizing: border-box;
-}
-
-.flex-container {
-  padding: 0;
-  margin: 0;
-  margin: -1em auto;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-.flex-item {
-  background-color: rgb(255, 255, 255);
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  margin: 1em;
-  height: 15rem;
-  flex: 1 1 auto;
-  border-radius: 5px;
-  box-shadow: 0, 2px, 10px,rgb(145, 144, 144);
-
-  // whatever the breakpoints are that scaffold has set.
-  @media screen and (min-width: 320px) {
-   width: 100vw;
-  }
-
-  @media screen and (min-width: 640px) {
-   width: calc(50vw - 4em);
-  }
-
-  @media screen and (min-width: 960px) {
-   width: calc(25vw - 4em);
-
-    &:first-child {
-      //margin-left: auto;
-    }
-
-    &:last-child {
-      //margin-right: auto;
-    }
-  }
-
-  @media screen and (min-width: 1280px) {
-
-  }
-}
-
-</style>

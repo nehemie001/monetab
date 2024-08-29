@@ -3,6 +3,8 @@ package ci.digitalacademy.monetab.services.Impl;
 import ci.digitalacademy.monetab.models.Adresse;
 import ci.digitalacademy.monetab.repositories.AdresseRepository;
 import ci.digitalacademy.monetab.services.AdresseService;
+import ci.digitalacademy.monetab.services.dto.AddressDTO;
+import ci.digitalacademy.monetab.services.mapper.AddressMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,21 +20,28 @@ public class AdresseServiceImpl implements AdresseService {
     private final AdresseRepository adresseRepository;
 
     /**
-     * @param adresse
+     * @param adresseDTO
      * @return
      */
     @Override
-    public Adresse save(Adresse adresse) {
-        return adresseRepository.save(adresse);
+    public AddressDTO save(AddressDTO adresseDTO) {
+        log.debug("Request to save: {}", adresseDTO);
+        Adresse adresse = AddressMapper.toEntity(adresseDTO);
+        adresse = adresseRepository.save(adresse);
+        return AddressMapper.toDto(adresse);
     }
 
     /**
-     * @param adresse
+     * @param addressDTO
      * @return
      */
     @Override
-    public Adresse update(Adresse adresse) {
-        return null;
+    public AddressDTO update(AddressDTO addressDTO) {
+        return findOne(addressDTO.getId()).map(existingAddress -> {
+            existingAddress.setCountry(addressDTO.getCountry());
+            existingAddress.setCity(addressDTO.getCity());
+            return save(existingAddress);
+        }).orElseThrow(() -> new IllegalArgumentException());
     }
 
     /**
@@ -40,16 +49,20 @@ public class AdresseServiceImpl implements AdresseService {
      * @return
      */
     @Override
-    public Optional<Adresse> findOne(Long id) {
-        return Optional.empty();
+    public Optional<AddressDTO> findOne(Long id) {
+        return adresseRepository.findById(id).map(adresse -> {
+            return AddressMapper.toDto(adresse);
+        });
     }
 
     /**
      * @return
      */
     @Override
-    public List<Adresse> findAll() {
-        return List.of();
+    public List<AddressDTO> findAll() {
+        return adresseRepository.findAll().stream().map(adresse -> {
+            return AddressMapper.toDto(adresse);
+        }).toList();
     }
 
     /**

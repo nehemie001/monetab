@@ -3,6 +3,8 @@ package ci.digitalacademy.monetab.services.Impl;
 import ci.digitalacademy.monetab.models.User;
 import ci.digitalacademy.monetab.repositories.UserRepository;
 import ci.digitalacademy.monetab.services.UserService;
+import ci.digitalacademy.monetab.services.dto.UserDTO;
+import ci.digitalacademy.monetab.services.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,26 +19,34 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-//    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class); // Une autre methode pour gerer les log.Debug
     private final UserRepository userRepository;
 
     @Override
-    public User save(User user) {
-        return userRepository.save(user);
+    public UserDTO save(UserDTO userDTO) {
+        log.debug("Request to save: {}", userDTO);
+        User user = UserMapper.toEntity(userDTO);
+        user = userRepository.save(user);
+        return UserMapper.toDto(user);
     }
 
     @Override
-    public User update(User user) {
-        log.debug("Request to update user {} ", user);
+    public UserDTO update(UserDTO userDTO) {
+        log.debug("Request to update user {} ", userDTO);
+//        Pour modifier quelques element de la table
+        return findOne(userDTO.getId()).map(existingUse -> {
+            existingUse.setPseudo(userDTO.getPseudo());
+            existingUse.setPhone(userDTO.getPhone());
+            return save(existingUse);
+        }).orElseThrow(() -> new IllegalArgumentException());
 //        La meilleur methode
-        return findOne(user.getId())
-                .map(existingUser -> { //Fonction lambda permettant de modifier l'utilisateur
-                    existingUser.setPseudo(user.getPseudo());
-                    existingUser.setPassword(user.getPassword());
-                    return existingUser;
-                }).map(existingUser -> { // Fonction lambda permettant d'enregistrer l'utilisateur modifié dans la table
-                    return save(existingUser);
-                }).orElseThrow(() -> new IllegalArgumentException()); // Lever d'une exception en cas d'innexistance dans la bd
+//        return findOne(user.getId())
+//                .map(existingUser -> { //Fonction lambda permettant de modifier l'utilisateur
+//                    existingUser.setPseudo(user.getPseudo());
+//                    existingUser.setPassword(user.getPassword());
+//                    return existingUser;
+//                }).map(existingUser -> { // Fonction lambda permettant d'enregistrer l'utilisateur modifié dans la table
+//                    return save(existingUser);
+//                }).orElseThrow(() -> new IllegalArgumentException()); // Lever d'une exception en cas d'innexistance dans la bd
 
 //        Autre methode
 
@@ -52,14 +62,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findOne(Long id) {
-        return userRepository.findById(id);
+    public Optional<UserDTO> findOne(Long id) {
+        return userRepository.findById(id).map(user -> {
+            return UserMapper.toDto(user);
+        });
     }
 
     @Override
-    public List<User> findAll() {
-        log.debug("Request to find all users");
-        return userRepository.findAll();
+    public List<UserDTO> findAll() {
+        return userRepository.findAll().stream().map(user -> {
+            return UserMapper.toDto(user);
+        }).toList();
     }
 
     @Override

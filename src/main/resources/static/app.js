@@ -1,172 +1,44 @@
-document.addEventListener("DOMContentLoaded", function () {
-  loadPage("menu.html");
-});
-// Get the file professeurs
-document.getElementById("tab-prof").addEventListener("click", function (event) {
-  event.preventDefault();
-
-  fetch("/teachers")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("content").innerHTML = data;
-
-      var firstmenu = document.getElementById("firstmenu");
-      firstmenu.style.display = "none"
-
-      document
-        .getElementById("tab-create-prof")
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-
-          // Create a prof
-          fetch("Professeurs/create.html")
-            .then((response) => response.text())
-            .then((data) => {
-              document.getElementById("content").innerHTML = data;
-            })
-            .catch((error) => console.error("erreur", error));
-        });
-    })
-    .catch((error) => console.error("erreur", error));
-
-  // Update prof
-  document
-    .getElementById("updateProf")
-    .addEventListener("click", function (event) {
-      event.preventDefault();
-
-      fetch("Professeurs/update.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("content").innerHTML = data;
-        })
-        .catch((error) => console.error("erreur", error));
-    });
+var usersChart = new Chart(document.getElementById('usersChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Nuevos', 'Registrados'],
+        datasets: [{
+            data: [30, 65],
+            backgroundColor: ['#00F0FF', '#8B8B8D'],
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            position: 'bottom' // Ubicar la leyenda debajo del círculo
+        }
+    }
 });
 
-// Get the file eleves
-document
-  .getElementById("tab-eleve")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-
-    fetch("/students")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("content").innerHTML = data;
-
-//        Create a student
-        document
-          .getElementById("tab-create-eleve")
-          .addEventListener("click", function (event) {
-            event.preventDefault();
-
-            fetch("/students")
-              .then((response) => response.text())
-              .then((data) => {
-                document.getElementById("content").innerHTML = data;
-              })
-              .catch((error) => console.error("erreur", error));
-          });
-
-        // Update student
-        document
-          .getElementById("updateStudent")
-          .addEventListener("click", function (event) {
-            event.preventDefault();
-
-            fetch("Eleves/update.html")
-              .then((response) => response.text())
-              .then((data) => {
-                document.getElementById("content").innerHTML = data;
-              })
-              .catch((error) => console.error("erreur", error));
-          });
-      })
-      .catch((error) => console.error("erreur", error));
-  });
-
-// Get the file users
-document.getElementById("tab-user").addEventListener("click", function (event) {
-  event.preventDefault();
-
-  fetch("/users")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("content").innerHTML = data;
-
-      // Create a user
-      document
-        .getElementById("tab-create-user")
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-
-          fetch("Utilisateurs/create.html")
-            .then((response) => response.text())
-            .then((data) => {
-              document.getElementById("content").innerHTML = data;
-            })
-            .catch((error) => console.error("erreur", error));
-        });
-
-      // Update student
-      document
-        .getElementById("updateStudent")
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-
-          fetch("Eleves/update.html")
-            .then((response) => response.text())
-            .then((data) => {
-              document.getElementById("content").innerHTML = data;
-            })
-            .catch((error) => console.error("erreur", error));
-        });
-    })
-    .catch((error) => console.error("erreur", error));
+// Gráfica de Comercios
+var commercesChart = new Chart(document.getElementById('commercesChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Nuevos', 'Registrados'],
+        datasets: [{
+            data: [60, 40],
+            backgroundColor: ['#FEC500', '#8B8B8D'],
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            position: 'bottom' // Ubicar la leyenda debajo del círculo
+        }
+    }
 });
 
-// Get the file menu
-document
-  .getElementById("dashboard")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
+// Agregar lógica para mostrar/ocultar la navegación lateral al hacer clic en el ícono de menú
+const menuBtn = document.getElementById('menuBtn');
+const sideNav = document.getElementById('sideNav');
 
-    fetch("menu.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("content").innerHTML = data;
-      })
-      .catch((error) => console.error("erreur", error));
-  });
-
-// Get the file menu
-document
-  .getElementById("tab-rapport")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-
-    fetch("Rapports/index.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("content").innerHTML = data;
-      })
-      .catch((error) => console.error("erreur", error));
-  });
-
-// Script for Modal
-
-function openModalDelete() {
-  var closeModal = document.getElementById("closeModal");
-  closeModal.style.display = "flex";
-}
-
-function btnClose() {
-  var closeModal = document.getElementById("closeModal");
-  closeModal.style.display = "none";
-}
-
-// Login button connect
-function loginBtn() {
-  document.getElementById("dashboard.html")
-}
+menuBtn.addEventListener('click', () => {
+    sideNav.classList.toggle('hidden'); // Agrega o quita la clase 'hidden' para mostrar u ocultar la navegación lateral
+});

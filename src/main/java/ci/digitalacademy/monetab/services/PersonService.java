@@ -1,19 +1,19 @@
 package ci.digitalacademy.monetab.services;
 
-import ci.digitalacademy.monetab.models.Person;
+import ci.digitalacademy.monetab.services.dto.PersonDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PersonService {
 
-    Person save(Person person);
+    PersonDTO save(PersonDTO person);
 
-    Person update(Person person);
+    PersonDTO update(PersonDTO person);
 
-    Optional<Person> findOne(Long id);
+    Optional<PersonDTO> findOne(Long id);
 
-    List<Person> findAll();
+    List<PersonDTO> findAll();
 
     void delete(Long id);
 }

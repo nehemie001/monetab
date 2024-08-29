@@ -15,7 +15,7 @@ import java.util.Optional;
 @Slf4j
 public class FicheNoteServiceImpl implements FicheNoteService {
 
-    private final FicheNoteRepository ficheNoteRepository;
+//    private final FicheNoteRepository ficheNoteRepository;
 
 
     /**
@@ -24,7 +24,7 @@ public class FicheNoteServiceImpl implements FicheNoteService {
      */
     @Override
     public FicheNote save(FicheNote ficheNote) {
-        return ficheNoteRepository.save(ficheNote);
+        return null;
     }
 
     /**
